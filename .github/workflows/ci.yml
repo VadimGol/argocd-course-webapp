@@ -39,7 +39,7 @@ jobs:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: mabusaa/argocd-course-webapp:${{ github.sha }}
+          tags: vadimgolovach/argocd-course-webapp:${{ github.sha }}
   promote-to-dev-environment:
     runs-on: self-hosted
     needs: docker-build-push
