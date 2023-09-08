@@ -10,11 +10,11 @@ on:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: echo "building and testing the app ..."
   docker-build-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build-test
     steps:
       -
@@ -41,7 +41,7 @@ jobs:
           push: true
           tags: mabusaa/argocd-course-webapp:${{ github.sha }}
   promote-to-dev-environment:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: docker-build-push
     steps:
       - run: |
