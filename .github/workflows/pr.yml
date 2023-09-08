@@ -36,7 +36,7 @@ jobs:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: mabusaa/argocd-course-webapp:${{ github.event.pull_request.head.sha }}
+          tags: vadimgolovach/argocd-course-webapp:${{ github.event.pull_request.head.sha }}
   update-image-tag-in-helm:
     runs-on: self-hosted
     needs: docker-build-push
