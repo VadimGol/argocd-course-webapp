@@ -7,11 +7,11 @@ on:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: echo "building and testing the app ..."
   docker-build-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build-test
     steps:
       -
@@ -38,7 +38,7 @@ jobs:
           push: true
           tags: mabusaa/argocd-course-webapp:${{ github.event.pull_request.head.sha }}
   update-image-tag-in-helm:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: docker-build-push
     steps:
       - run: |
@@ -53,7 +53,7 @@ jobs:
           git add . && git commit -m "update image tag [skip ci]"
           git push
   add_labels:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: update-image-tag-in-helm
     steps:
       - uses: actions/checkout@v2
